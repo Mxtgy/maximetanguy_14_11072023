@@ -1,4 +1,20 @@
-export const DEPARTMENT_LIST = ["Sales", "Marketing", "Engineering", "Human Resources", "Legal"];
+export const DEPARTMENT_LIST = [
+    {
+        "name": "Sales",
+    },
+    {
+        "name": "Marketing",
+    },
+    {
+        "name": "Engineering",
+    },
+    {
+        "name": "Human Resources",
+    },
+    {
+        "name": "Legal",
+    }
+ ];
 
 export const STATES_LIST = [
     {
