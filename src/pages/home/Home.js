@@ -1,21 +1,37 @@
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import Datepicker from '../../components/datepicker/Datepicker.js';
 import Select from '../../components/select/Select.js';
+import Modale from '../../components/modale/Modale.js';
+//import createNewEmployee from '../../utils/createNewEmployee.js';
+//import { createEmployee } from '../../utils/apiClient.js';
 import { STATES_LIST, DEPARTMENT_LIST } from '../../utils/const.js';
+
 
 function Home() {
 
-    var contentState = STATES_LIST;
-    var contentDepartment = DEPARTMENT_LIST;
+    const [isActive, setIsActive] = useState(false);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         var form = document.querySelector('form');
         if (form) {
-            var select2 = form.querySelector('#department').value;
-            console.log(select2);
+            /*var newEmployeeObject = createNewEmployee(form);
+            if (!newEmployeeObject) return false;
+            const employee = await createEmployee(newEmployeeObject);
+            if (!employee) return false;
+            console.log("success! employee created");
+            console.log(employee);*/
+            console.log("je passe en premier");
+            setIsActive(true);
+
         }
     }
+
+    function closeModale() {
+        setIsActive(false);
+    }
+
     return (
         <>
             <div className="title">
@@ -43,24 +59,24 @@ function Home() {
                         <label htmlFor="city">City</label>
                         <input id="city" type="text" />
 
-                        <Select tagname="state" title="State" content={contentState} />
+                        <Select id="state" tagname="state" title="State" content={STATES_LIST} />
 
                         <label htmlFor="zip-code">Zip Code</label>
                         <input id="zip-code" type="number" />
                     </fieldset>
 
-                    <Select tagname="department" title="Department" content={contentDepartment} />
+                    <Select id="department" tagname="department" title="Department" content={DEPARTMENT_LIST} />
                     
                 </form>
                 <button type="submit" onClick={handleSubmit}>Save</button>
-
-                {/*
-                <MODAL ISOPEN=FALSE>
+                    
+                <Modale enableClose={ true } onClose={ closeModale } isActive={ isActive }>
                     <div>
-                    <p>L'utilisateur a bien été créé !</p>
+                       <h1>Bonjour !</h1>
+                        <p>L'utilisateur a bien été créé !</p>
                     </div>
-                </MODAL>
-                */}
+                </Modale>
+                
             </div>
         </>
     );
