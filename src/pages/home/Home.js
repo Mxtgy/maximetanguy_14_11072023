@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Datepicker from '../../components/datepicker/Datepicker.js';
 import Select from '../../components/select/Select.js';
 import Modale from '../../components/modale/Modale.js';
-//import createNewEmployee from '../../utils/createNewEmployee.js';
-//import { createEmployee } from '../../utils/apiClient.js';
+import createNewEmployee from '../../utils/createNewEmployee.js';
+import { createEmployee } from '../../utils/apiClient.js';
 import { STATES_LIST, DEPARTMENT_LIST } from '../../utils/const.js';
 
 
@@ -12,19 +12,23 @@ function Home() {
 
     const [isActive, setIsActive] = useState(false);
 
+    function clearFields(e) {
+        Array.from(e.target).forEach((e) => (e.value = ""));
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
         var form = document.querySelector('form');
         if (form) {
-            /*var newEmployeeObject = createNewEmployee(form);
+            var newEmployeeObject = createNewEmployee(form);
             if (!newEmployeeObject) return false;
             const employee = await createEmployee(newEmployeeObject);
             if (!employee) return false;
             console.log("success! employee created");
-            console.log(employee);*/
+            console.log(employee);
             console.log("je passe en premier");
             setIsActive(true);
-
+            clearFields(e);
         }
     }
 
@@ -40,7 +44,7 @@ function Home() {
             <div className="container">
                 <NavLink to="/employee-list">View Current Employees</NavLink>
                 <h2>Create Employee</h2>
-                <form action="#" id="create-employee">
+                <form action="#" onSubmit={handleSubmit} id="create-employee">
                     <label htmlFor="first-name">First Name</label>
                     <input type="text" id="first-name" />
 
@@ -66,9 +70,10 @@ function Home() {
                     </fieldset>
 
                     <Select id="department" tagname="department" title="Department" content={DEPARTMENT_LIST} />
-                    
+
+                    <button type="submit">Save</button>    
                 </form>
-                <button type="submit" onClick={handleSubmit}>Save</button>
+                
                     
                 <Modale enableClose={ true } onClose={ closeModale } isActive={ isActive }>
                     <div>

@@ -11,7 +11,6 @@ async function fetchData(path, content) {
     const url = 'http://localhost:3000/employee' + path;
     try {
         const response = await fetch(url, content);
-        debugger;
         const json = await response.json();
         if (json && json.status === 200) {
             return json;
