@@ -4,6 +4,7 @@
 
 .modale.show {
     opacity: 1;
+    background-color: transparent;
     display: block;
     position: fixed;
     left: 0;

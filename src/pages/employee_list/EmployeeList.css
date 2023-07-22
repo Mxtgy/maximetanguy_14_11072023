@@ -1,0 +1,11 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 6em;
+}
+
+.search-container label {
+    margin: 0 .5em 0 0;
+}
