@@ -3,6 +3,9 @@ import Home from './pages/home/Home.js';
 import EmployeeList from './pages/employee_list/EmployeeList.js';
 import ErrorRedirect from './pages/error/ErrorRedirect.js';
 
+/*
+This is the router managing all the routes.
+*/
 function Router() {
     return (
         <Routes>

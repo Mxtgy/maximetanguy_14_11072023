@@ -8,7 +8,7 @@ const METHOD_GET = 'GET';
  * @returns { (Object|boolean) }
  */
 async function fetchData(path, content) {
-    const url = 'http://localhost:3000/employee' + path;
+    const url = 'http://localhost:3000/employees' + path;
     try {
         const response = await fetch(url, content);
         const json = await response.json();
@@ -26,7 +26,7 @@ async function fetchData(path, content) {
  * @returns { Object | boolean}
  */
 async function fetchEmployees() {
-    const path = '/employees';
+    const path = '/';
     const callObject = {
         method: METHOD_GET,
     }
@@ -39,7 +39,7 @@ async function fetchEmployees() {
  * @returns { Object | boolean}
  */
 async function createEmployee(employee) {
-    const path = '/create';
+    const path = '/';
     const data = employee;
     const callObject = {
         method: METHOD_POST,

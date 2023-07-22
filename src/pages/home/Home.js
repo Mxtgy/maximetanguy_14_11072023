@@ -7,15 +7,24 @@ import createNewEmployee from '../../utils/createNewEmployee.js';
 import { createEmployee } from '../../utils/apiClient.js';
 import { STATES_LIST, DEPARTMENT_LIST } from '../../utils/const.js';
 
-
+/*
+This is the homepage component,
+it includes a form to create new employee.
+*/
 function Home() {
 
     const [isActive, setIsActive] = useState(false);
 
+    /*
+    Function to clear all the form inputs. 
+    */
     function clearFields(e) {
         Array.from(e.target).forEach((e) => (e.value = ""));
     }
 
+    /*
+    Function initializing the creation of a new employee. 
+    */
     async function handleSubmit(e) {
         e.preventDefault();
         var form = document.querySelector('form');
@@ -24,9 +33,6 @@ function Home() {
             if (!newEmployeeObject) return false;
             const employee = await createEmployee(newEmployeeObject);
             if (!employee) return false;
-            console.log("success! employee created");
-            console.log(employee);
-            console.log("je passe en premier");
             setIsActive(true);
             clearFields(e);
         }
@@ -71,16 +77,17 @@ function Home() {
 
                     <Select id="department" tagname="department" title="Department" content={DEPARTMENT_LIST} />
 
-                    <button type="submit">Save</button>    
                 </form>
-                
+
+                <button className="btn-submit" type="submit" form="create-employee">Save</button>                
                     
-                <Modale enableClose={ true } onClose={ closeModale } isActive={ isActive }>
-                    <div>
-                       <h1>Bonjour !</h1>
-                        <p>L'utilisateur a bien été créé !</p>
-                    </div>
-                </Modale>
+                <Modale
+                    enableClose={ true }
+                    title="Bonjour !"
+                    content="L'utilisateur a bien été créé !"
+                    onClose={ closeModale }
+                    isActive={ isActive }
+                />
                 
             </div>
         </>
