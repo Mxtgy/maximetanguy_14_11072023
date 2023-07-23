@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import Datepicker from '../../components/datepicker/Datepicker.js';
 import Select from '../../components/select/Select.js';
-import Modale from '../../components/modale/Modale.js';
+import { Modale } from 'my-oc-react-modal-component';
 import createNewEmployee from '../../utils/createNewEmployee.js';
 import { createEmployee } from '../../utils/apiClient.js';
 import { STATES_LIST, DEPARTMENT_LIST } from '../../utils/const.js';
