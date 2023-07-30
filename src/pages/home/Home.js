@@ -80,14 +80,18 @@ function Home() {
                 </form>
 
                 <button className="btn-submit" type="submit" form="create-employee">Save</button>                
-                    
-                <Modale
-                    enableClose={ true }
-                    title="Bonjour !"
-                    content="L'utilisateur a bien été créé !"
-                    onClose={ closeModale }
-                    isActive={ isActive }
-                />
+                
+                { isActive &&
+                    <Modale
+                        enableClose={ true }
+                        title="Bonjour !"
+                        content="L'utilisateur a bien été créé !"
+                        titleClass="my-title"
+                        contentClass="my-content"
+                        onClose={ closeModale }
+                        isActive={ isActive }
+                    />
+                }
                 
             </div>
         </>
